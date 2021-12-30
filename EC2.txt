@@ -1,0 +1,20 @@
+scp -i /Users/LiuYing/Desktop/GU/2021-fall/640/assignment/mini_project/load_mysql-keypair.pem al_perf.csv ec2-user@ec2-18-209-16-218.compute-1.amazonaws.com:/home/ec2-user
+
+ssh -i /Users/LiuYing/Desktop/GU/2021-fall/640/assignment/mini_project/load_mysql-keypair.pem ec2-user@ec2-18-209-16-218.compute-1.amazonaws.com
+
+cd /home/ec2-user
+ls
+
+
+mysqlimport --local --compress --user=admin --password=5aMgg7THH9s9NJSmpm4E --host=database-1.covixa4wnvdm.us-east-1.rds.amazonaws.com --fields-terminated-by=',' --fields-optionally-enclosed-by='"' FAA al_perf.csv
+
+
+--------------------------------------- homework ---------------------------------------
+1. 先copy到instance上
+scp -i /Users/LiuYing/Desktop/GU/2021-fall/640/assignment/mini_project/load_mysql-keypair.pem /Users/LiuYing/Desktop/攻克北 美/HW/MAPMG-\ Data\ Analyst\ Technical\ Assessments20211206093638/Pregnancy\ Assessment/PCP_Table.csv ec2-user@ec2-23-20-163-39.compute-1.amazonaws.com:/home/ec2-user
+
+2. 连接instance
+ssh -i /Users/LiuYing/Desktop/GU/2021-fall/640/assignment/mini_project/load_mysql-keypair.pem ec2-user@ec2-54-221-51-217.compute-1.amazonaws.com
+
+3. 连接MySQL
+mysqlimport --local --compress --user=admin --password=5aMgg7THH9s9NJSmpm4E --host=database-1.covixa4wnvdm.us-east-1.rds.amazonaws.com --fields-terminated-by=',' --fields-optionally-enclosed-by='"' pregnancy PCP_Table.csv
